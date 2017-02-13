@@ -1,0 +1,64 @@
+<div class="col-sm-8 col-sm-offset-2">
+  <h4 style="text-align: center"> Add Track </h4>
+  <hr>
+
+  <div *ngIf="message">
+      <div class="alert alert-danger">
+        <span class="close" (click)="hideMessage()">×</span>
+        <strong>Attention! </strong> {{ message }}
+      </div>
+
+    </div>
+
+  <div>
+      <label> Name: </label>
+      <input [(ngModel)]="title" placeholder="title" class="form-control"/>
+    </div>
+
+
+
+  <br>
+
+    <div>
+      <label>Genres: </label>
+
+      <ul class="list-inline genr" role="tablist">
+
+          <li *ngFor="let genre of selectedGenres">
+
+               <div class="badge">
+                 {{ genre.name }}
+                 <span (click)="removeGenre(genre)"><i class="fa fa-times" aria-hidden="true"></i></span>
+
+               </div>
+          </li>
+      </ul>
+
+      <!-- add new genre to the track -->
+      <form class="form-inline">
+        <div class="form-group">
+          <div class="input-group">
+            <input ng2-auto-complete
+              type="text"
+              class="form-control input-sm"
+              placeholder="add new genre"
+              [source]="genres"
+              [(ngModel)]="selectedGenre"
+              value-property-name=null
+              display-property-name="name"
+              [ngModelOptions]="{standalone: true}"
+            />
+
+            <span class="input-group-btn">
+              <button class="btn btn-default btn-sm" [disabled]="!selectedGenre" (click)="selectGenre()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+    <br>
+    <button class="btn btn-success" (click)="createTrack()">  Create Track  </button>
+
+
+</div>
+

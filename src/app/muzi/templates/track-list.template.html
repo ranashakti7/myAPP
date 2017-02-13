@@ -1,0 +1,49 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="form-group">
+            <div class="icon-addon addon-sm">
+              <form (submit)="searchTrack(searchText)">
+                <input
+                  name="title"
+                  placeholder="Search Track"
+                  class="form-control input-sm"
+                  [(ngModel)]="searchText"
+                />
+              </form>
+                <label class="glyphicon glyphicon-search" rel="tooltip"></label>
+            </div>
+        </div>
+     </div>
+  </div>
+
+
+
+  <div class="list-group">
+    <ul class="items">
+      <li *ngFor="let track of tracks" [class.selected]="isSelected(track)" (click)="onSelect(track)" class="list-group-item list-group-item-action flex-column align-items-start"
+      >
+          <!--<span class="badge"> {{ track.id }}</span> {{ track.title }}-->
+
+        <div class="d-flex w-100 justify-content-between">
+          <h4 class="mb-1">{{ track.title }} <span class="badge"> <i class="fa fa-star" aria-hidden="true"></i> {{track.rating}}</span> </h4>
+      </div>
+      <small>
+        <ul class="list-inline">
+          <li *ngFor="let genre of track.genres" class="list-item"> {{ genre.name }}</li>
+        </ul>
+      </small>
+      </li>
+    </ul>
+    <div style="text-align: center;">
+    <button
+      type="button"
+      [hidden]="!prev && !next"
+      [disabled]="!prev"
+      class="btn btn-pre"
+      (click)="fetchPrev()"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Prev</button>
+    <button type="button" [hidden]="!prev && !next" [disabled]="!next" class="btn btn-next" (click)="fetchNext()">Next <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+    </div>
+  </div>
+</div>

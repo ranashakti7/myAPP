@@ -1,0 +1,76 @@
+<div *ngIf="track" class="col-sm-8 col-sm-offset-2">
+    <h4 style="text-align: center"> Track Details </h4>
+    <hr>
+
+    <!--<div>-->
+      <!--<label> Name: </label>-->
+      <!--<input [(ngModel)]="track.title" placeholder="title" class="form-control"/>-->
+    <!--</div>-->
+
+    <!-- message -->
+    <div *ngIf="message">
+      <div class="alert alert-success">
+        <span class="close" (click)="hideSuccessMessage()">×</span>
+        <strong>Successfully! </strong> {{ message }}
+      </div>
+
+    </div>
+
+
+
+    <div class="input-group">
+      <input type="text" class="form-control" [(ngModel)]="track.title" (keyup)="trackChanged()" placeholder="title">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button" disabled><i class="fa fa-star" aria-hidden="true"></i>
+     {{ track.rating }}</button>
+        </span>
+
+    </div>
+
+    <br>
+
+
+    <div>
+      <label>Genres: </label>
+
+
+      <ul class="list-inline genr" role="tablist">
+
+          <li *ngFor="let genre of track.genres">
+
+               <div class="badge">
+                 {{ genre.name }}
+                 <span (click)="removeGenre(genre)"><i class="fa fa-times" aria-hidden="true"></i></span>
+
+               </div>
+          </li>
+      </ul>
+
+      <!-- add new genre to the track -->
+      <form class="form-inline">
+        <div class="form-group">
+          <div class="input-group">
+            <input ng2-auto-complete
+              type="text"
+              class="form-control input-sm"
+              placeholder="add new genre"
+              [source]="genres"
+              [(ngModel)]="selectedGenre"
+              value-property-name=null
+              display-property-name="name"
+              [ngModelOptions]="{standalone: true}"
+            />
+
+            <span class="input-group-btn">
+              <button class="btn btn-default btn-sm" [disabled]="!selectedGenre" (click)="selectGenre()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+    <br>
+    <button class="btn btn-success" [disabled]="!changed" (click)="updateTrack()">  Save  </button>
+    <button type="button" class="btn btn-danger" (click)="delTrack(track)">Delete</button>
+
+</div>
+

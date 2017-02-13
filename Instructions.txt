@@ -1,0 +1,5 @@
+1. sneak into the directory myMuzi and run 
+	npm install
+2. npm start
+
+3. open http://localhost:4200  in your browser.

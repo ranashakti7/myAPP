@@ -1,0 +1,21 @@
+<!-- Static navbar -->
+<div class="container">
+  <div class="header clearfix">
+    <nav>
+      <ul class="nav nav-pills pull-right">
+        <li role="presentation">
+           <a [routerLink]="['/add-track']" routerLinkActive="active">
+             <span class="label label-success label-as-badge">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              Create</span>
+           </a>
+         </li>
+        <li role="presentation"><a [routerLink]="['/tracks']" routerLinkActive="active">Tracks</a></li>
+        <li role="presentation"><a [routerLink]="['/genres']" routerLinkActive="active">Genre</a></li>
+      </ul>
+      <h3><a [routerLink]="['/']" routerLinkActive="active" style="text-decoration: none">Muzi</a></h3>
+    </nav>
+
+  </div>
+<router-outlet></router-outlet>
+</div>

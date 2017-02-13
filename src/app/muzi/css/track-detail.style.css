@@ -1,0 +1,5 @@
+.genr span:hover {
+  opacity: 1.0;
+  background-color: darkgrey;
+  cursor: pointer;
+}

@@ -1,0 +1,38 @@
+<div class="list-group">
+
+   <div style="text-align: center;"><h3> Genres </h3></div>
+
+
+    <div class="form-group">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control input-sm"
+          placeholder="add new genre"
+          [(ngModel)]="newGenre"
+          name="newgenre"
+        />
+
+        <span class="input-group-btn">
+          <button class="btn btn-default btn-sm" (click)="addGenre()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        </span>
+      </div>
+    </div>
+
+
+
+  <!-- genre list -->
+  <ul class="items">
+    <li *ngFor="let genre of genres" (click)="removeGenre(genre)" >
+
+      <span class="badge badge-default">{{ genre.name }}</span>
+
+
+    </li>
+  </ul>
+
+  <div style="text-align: center;">
+    <button type="button" [disabled]="!prev" class="btn btn-pre" (click)="fetchPrev()"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Prev</button>
+    <button type="button" [disabled]="!next" class="btn btn-next" (click)="fetchNext()">Next <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+  </div>
+</div>
